@@ -1,0 +1,71 @@
+20210224.1 (MPM) Initial commit, with Retofit service classes for Yelp search request
+
+AndroidManifest.xml
+Default file:
++ changed android:name to .ui.MainActivity
+
+build.gradle
+Default file:
++ added ext.retrofit_version
+
+build.gradle (app)
+Default file:
++ changed updated junit to current version: not "+"
++ added retrofit2:retrofit
++ added retrofit2:converter-gson
+
+CoordinatesEntity.kt
+New file:
++ generic data class
+
+MainActivity.kt
+Default file:
++ added header
+
+YelpApp.kt
+New file:
++ header with Client ID, API Key, and requirements
+
+YelpBusinessEntity.kt
+YelpCategoryEntity.kt
+YelpLocationEntity.kt
+YelpRegionEntity.kt
+YelpSearchEntity.kt
+New file:
++ Yelp data classes
+
+YelpRetrofit.kt
+New file:
+- Interface for retrofit to get yelp data
+
+.gitignore (app)
+.gitignore
+activity_main.xml
+colors.xml
+gradle.properties
+gradle-wrapper.jar
+gradle-wrapper.properties
+gradlew
+gradlew.bat
+ic_launcher.png
+ic_launcher.png
+ic_launcher.png
+ic_launcher.png
+ic_launcher.png
+ic_launcher.xml
+ic_launcher_background.xml
+ic_launcher_foreground.xml
+ic_launcher_round.png
+ic_launcher_round.png
+ic_launcher_round.png
+ic_launcher_round.png
+ic_launcher_round.png
+ic_launcher_round.xml
+proguard-rules.pro
+settings.gradle
+strings.xml
+themes.xml (app)
+themes.xml
+Default files:
+- android defaults
+

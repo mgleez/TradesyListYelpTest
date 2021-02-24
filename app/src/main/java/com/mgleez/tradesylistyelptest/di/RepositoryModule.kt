@@ -22,25 +22,23 @@ import javax.inject.Singleton
  */
 @InstallIn(SingletonComponent::class)
 @Module
-object RepositoryModule  {
-
-    /**
-     * Annotations create a single (java `@Singleton`) provider (dagger `@Provides`) method binding
-     * the type YelpRepository to its returned value so dagger can inject where needed a
-     * YelpRepository with all of these parameters.
-     */
-    @Singleton
-    @Provides
-    fun providesYelpRepository(
-      yelpBusinessDao: YelpBusinessDao,
-      yelpRetrofit: YelpRetrofit,
-      yelpBusinessMapper: YelpBusinessMapper,
-      yelpBusinessCacheMapper: YelpBusinessCacheMapper
-    ): YelpRepository = YelpRepository(
-        yelpBusinessDao,
-        yelpRetrofit,
-        yelpBusinessMapper,
-        yelpBusinessCacheMapper
-    )
-
+object RepositoryModule {
+  /**
+   * Annotations create a single (java `@Singleton`) provider (dagger `@Provides`) method binding
+   * the type YelpRepository to its returned value so dagger can inject where needed a
+   * YelpRepository with all of these parameters.
+   */
+  @Singleton
+  @Provides
+  fun providesYelpRepository(
+    yelpBusinessDao: YelpBusinessDao,
+    yelpRetrofit: YelpRetrofit,
+    yelpBusinessMapper: YelpBusinessMapper,
+    yelpBusinessCacheMapper: YelpBusinessCacheMapper
+  ): YelpRepository = YelpRepository(
+    yelpBusinessDao,
+    yelpRetrofit,
+    yelpBusinessMapper,
+    yelpBusinessCacheMapper
+  )
 }

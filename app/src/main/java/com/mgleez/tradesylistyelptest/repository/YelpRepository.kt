@@ -2,6 +2,7 @@ package com.mgleez.tradesylistyelptest.repository
 
 import com.mgleez.tradesylistyelptest.getCurrentLatitude
 import com.mgleez.tradesylistyelptest.getCurrentLongitude
+import com.mgleez.tradesylistyelptest.getCurrentSearchTerm
 import com.mgleez.tradesylistyelptest.getYelpApiKey
 import com.mgleez.tradesylistyelptest.models.YelpBusiness
 import com.mgleez.tradesylistyelptest.models.YelpSearch
@@ -38,7 +39,7 @@ constructor(
       insertYelpBusinessIntoRepository(
         yelpRetrofit.getBusinessList(
           getYelpApiKey(),
-          "Hollywood",
+          getCurrentSearchTerm(),
           getCurrentLatitude(),
           getCurrentLongitude()
         )

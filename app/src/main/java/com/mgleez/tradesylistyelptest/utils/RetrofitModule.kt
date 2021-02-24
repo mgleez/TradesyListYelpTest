@@ -31,7 +31,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 object RetrofitModule {
-
   /**
    * Annotations create a single (java) provider (dagger) method binding the type Gson to its
    * returned value so dagger can inject a Gson where needed.
@@ -86,5 +85,5 @@ object RetrofitModule {
     .build()
 
   data class BaseUrl(val url: String)
-
 }
+

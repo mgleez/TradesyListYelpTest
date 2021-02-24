@@ -24,25 +24,23 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 object RetrofitModule {
+  /**
+   * Annotations create a single (java) provider (dagger) method binding the type YelpRetrofit
+   * (interface for retrofit to get weather data) to its returned value so dagger can inject a
+   * YelpService with a Retrofit.Builder parameter where needed.
+   */
+  @Singleton
+  @Provides
+  fun providesYelpService(retrofit: Retrofit): YelpRetrofit =
+    retrofit.create(YelpRetrofit::class.java)
 
-    /**
-     * Annotations create a single (java) provider (dagger) method binding the type YelpRetrofit
-     * (interface for retrofit to get weather data) to its returned value so dagger can inject a
-     * YelpService with a Retrofit.Builder parameter where needed.
-     */
-    @Singleton
-    @Provides
-    fun providesYelpService(retrofit: Retrofit): YelpRetrofit =
-        retrofit.create(YelpRetrofit::class.java)
-
-    /**
-     * Annotations create a single (java) provider (dagger) method binding the type
-     * RetrofitModule.BaseUrl to its returned value so dagger can inject a
-     * RetrofitModule.BaseUrl where needed.
-     */
-    @Singleton
-    @Provides
-    fun providesBaseUrl(): RetrofitModule.BaseUrl =
-        RetrofitModule.BaseUrl(BASE_URL)
-
+  /**
+   * Annotations create a single (java) provider (dagger) method binding the type
+   * RetrofitModule.BaseUrl to its returned value so dagger can inject a
+   * RetrofitModule.BaseUrl where needed.
+   */
+  @Singleton
+  @Provides
+  fun providesBaseUrl(): RetrofitModule.BaseUrl =
+    RetrofitModule.BaseUrl(BASE_URL)
 }

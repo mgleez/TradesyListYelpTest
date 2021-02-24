@@ -24,32 +24,30 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 object RoomModule {
+  /**
+   * Annotations create a single (java) provider (dagger) method binding the type
+   * YelpRoomDatabase to its returned value so dagger can inject a YelpRoomDatabase with
+   * a context parameter where needed.
+   */
+  @Singleton
+  @Provides
+  fun providesYelpRoomDatabase(@ApplicationContext context: Context): YelpRoomDatabase =
+    Room
+      .databaseBuilder(
+        context,
+        YelpRoomDatabase::class.java,
+        YelpRoomDatabase.DATABASE_NAME
+      )
+      .fallbackToDestructiveMigration()
+      .build()
 
-    /**
-     * Annotations create a single (java) provider (dagger) method binding the type
-     * YelpRoomDatabase to its returned value so dagger can inject a YelpRoomDatabase with
-     * a context parameter where needed.
-     */
-    @Singleton
-    @Provides
-    fun providesYelpRoomDatabase(@ApplicationContext context: Context): YelpRoomDatabase =
-        Room
-            .databaseBuilder(
-              context,
-              YelpRoomDatabase::class.java,
-              YelpRoomDatabase.DATABASE_NAME
-            )
-            .fallbackToDestructiveMigration()
-            .build()
-
-    /**
-     * Annotations create a single (java) provider (dagger) method binding the type YelpDao
-     * to its returned value so dagger can inject a YelpDao with a YelpRoomDatabase parameter
-     * where needed.
-     */
-    @Singleton
-    @Provides
-    fun providesYelpDao(yelpRoomDatabase: YelpRoomDatabase): YelpBusinessDao =
-        yelpRoomDatabase.yelpBusinessDao()
-
+  /**
+   * Annotations create a single (java) provider (dagger) method binding the type YelpDao
+   * to its returned value so dagger can inject a YelpDao with a YelpRoomDatabase parameter
+   * where needed.
+   */
+  @Singleton
+  @Provides
+  fun providesYelpDao(yelpRoomDatabase: YelpRoomDatabase): YelpBusinessDao =
+    yelpRoomDatabase.yelpBusinessDao()
 }

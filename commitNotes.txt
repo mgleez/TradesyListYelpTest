@@ -1,3 +1,32 @@
+#########################
+20210224.3
++ More dependency injection and cleanup
+
+RepositoryModule.kt
+RetrofitModule.kt (di)
+RetrofitModule.kt (utils)
+RoomModule.kt
+YelpSearchMapper.kt
+Changed:
+- file formatting
+
+YelpApp.kt
+Changed:
++ getYelpApiKey() to include "Bearer"
+Added:
++ getCurrentSearchTerm()
+Removed:
++ getYelpClientId()
+
+YelpBusinessDao.kt
+Changed:
++ getBusinesses() query
+
+YelpRepository.kt
+Changed:
++ to use getCurrentSearchTerm()
+
+###############################
 20210224.2 (MPM)
 + Updated Retofit service classes.
 + Added room, repository, and mappers
@@ -5,7 +34,7 @@
 
 build.gradle (app)
 Added:
-+ room-ktx, room-runtime
++ room-ktx, room-runtime, okhttp3:logging
 Changed:
 + ' to "
 

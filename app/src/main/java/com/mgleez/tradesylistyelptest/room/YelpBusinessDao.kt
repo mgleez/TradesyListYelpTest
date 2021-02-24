@@ -13,8 +13,14 @@ interface YelpBusinessDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(yelpBusinessRoomEntity: YelpBusinessRoomEntity): Long
 
-    @Query("SELECT * FROM businesses") // See: YelpCacheMapper
+    @Insert()
+    suspend fun insert(yelpBusinessRoomEntityList: List<YelpBusinessRoomEntity>): List<Long>
+
+    @Query("SELECT id, name, image, review FROM businesses") // See: YelpCacheMapper
     suspend fun getBusinesses(): List<YelpBusinessRoomEntity>
+
+    @Query("SELECT * FROM businesses") // See: YelpCacheMapper
+    suspend fun getBusinessesX(): List<YelpBusinessRoomEntity>
 
     @Query("SELECT * FROM businesses WHERE id == :id") // See: YelpCacheMapper
     suspend fun getBusiness(id: String): YelpBusinessRoomEntity

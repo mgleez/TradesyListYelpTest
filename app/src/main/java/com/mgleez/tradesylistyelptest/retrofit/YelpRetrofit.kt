@@ -1,6 +1,7 @@
 package com.mgleez.tradesylistyelptest.retrofit
 
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Query
 
 /**
@@ -9,13 +10,13 @@ import retrofit2.http.Query
  * Created by Mike Margulies 20210224
  */
 interface YelpRetrofit {
-
   /**
    * Using retrofit2's @GET annotation with @Query annotation's URL param appending,
    * requests a search for businesses by search term, latitude, longitude, etc.
    */
   @GET("businesses/search/")
   suspend fun getBusinessList(
+    @Header("Authorization") key: String,
     @Query("term") term: String,
     @Query("latitude") latitude: Double,
     @Query("longitude") longitude: Double,
@@ -31,6 +32,4 @@ interface YelpRetrofit {
     @Query("open_at") open_at: Int? = null,
     @Query("attributes") attributes: String? = null
   ): YelpSearchEntity
-
-
 }

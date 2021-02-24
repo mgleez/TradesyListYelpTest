@@ -3,17 +3,16 @@ package com.mgleez.tradesylistyelptest.retrofit
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-class YelpSearchEntity {
+data class YelpSearchEntity(
   @SerializedName("total")
   @Expose
-  var total: Int? = null
+  var total: Int,
 
   @SerializedName("businesses")
   @Expose
-  var businesses: List<YelpBusinessEntity>? = null
+  var businesses: List<YelpBusinessEntity>,
 
   @SerializedName("region")
   @Expose
   var region: YelpRegionEntity? = null
-
-}
+)

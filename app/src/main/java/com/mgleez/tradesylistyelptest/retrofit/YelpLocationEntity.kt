@@ -3,7 +3,7 @@ package com.mgleez.tradesylistyelptest.retrofit
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class YelpLocationEntity (
+data class YelpLocationEntity(
   @SerializedName("city")
   @Expose
   var city: String? = null,

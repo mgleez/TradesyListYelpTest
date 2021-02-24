@@ -1,3 +1,97 @@
+20210224.2 (MPM)
++ Updated Retofit service classes.
++ Added room, repository, and mappers
++ Added mvi intents and flow
+
+build.gradle (app)
+Added:
++ room-ktx, room-runtime
+Changed:
++ ' to "
+
+build.gradle
+Added:
++ room_version
+
+EntityMapper.kt
+New File:
++ interface for mapping from an entity to a domain model and the reverse
+
+Flow.kt
+New File:
++ a basic request/response flow function
+
+RepositoryModule.kt
+RetrofitModule.kt
+RoomModule.kt
+New Files:
++ dependency injection objects
+
+RetrofitModule.kt
+New File:
++ Retrofit dependency injection object, for utility providers
+
+New File:
++ MVI viewModel intents
+
+YelpApp.kt
+Added:
++ clientId and apiKey and default coordinates
+
+YelpBusinessCacheMapper.kt
+New File:
++ map YelpBusinessRoomEntity to/from UI-used YelpBusiness
+
+YelpBusinessDao.kt
+New File:
++ to insert and get businesses
+
+YelpBusinessMapper.kt
+New File:
++ map YelpBusinessEntity to/from UI-used YelpBusiness
+
+YelpBusinessRoomEntity.kt
+New File:
++ tableName = "businesses"
+
+YelpCategoryEntity.kt
+YelpLocationEntity.kt
+Changed:
+- layout
+
+YelpRegionEntity.kt
+Changed:
++ class to data class
+
+YelpRepository.kt
+New File:
++ cache and retrieve data, a method to launch the request and emit viewModel intents
+
+YelpRetrofit.kt
+Added:
++ Authorization header
+
+YelpRoomDatabase.kt
+New File:
++ room db
+
+YelpSearch.kt
+New File:
++ The data classes passed in the success viewModel intent
+
+YelpSearchCacheMapper.kt
+New File:
++ map network YelpSearchEntity to/from UI used YelpSearch
+
+YelpSearchEntity.kt
+Changed:
++ class to data class
+
+YelpSearchMapper.kt
+New File:
++ map YelpSearchEntity to/from UI used YelpSearch
+
+###############################
 20210224.1 (MPM) Initial commit, with Retofit service classes for Yelp search request
 
 AndroidManifest.xml

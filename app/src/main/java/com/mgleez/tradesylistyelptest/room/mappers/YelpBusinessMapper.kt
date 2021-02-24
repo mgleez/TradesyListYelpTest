@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 /**
  * Class with injectable constructor to map
- * network YelpBusinessEntity to/from UI-used WeatherHour.
+ * network YelpBusinessEntity to/from UI-used YelpBusiness.
  *
  * Created by Mike Margulies 20210224
  */

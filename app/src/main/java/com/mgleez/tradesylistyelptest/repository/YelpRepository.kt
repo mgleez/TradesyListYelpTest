@@ -32,16 +32,16 @@ constructor(
   /**
    * A use-case to return a flow that will make a retrofit request, store it in the repository,
    * and as viewModel intents it will emit loading and emit error or success.
-   * Used in: YelpViewModel's setYelpViewModelIntent()
+   * Used in: YelpSearchViewModel's setYelpViewModelIntent()
    */
   suspend fun getYelpSearchIntentFlow(): Flow<ViewModelIntent<YelpSearch>> = retrofitRoomMviFlow(
     requestDataAndInsertResponseIntoRepository = {
       insertYelpBusinessIntoRepository(
         yelpRetrofit.getBusinessList(
           getYelpApiKey(),
-          getCurrentSearchTerm(),
           getCurrentLatitude(),
-          getCurrentLongitude()
+          getCurrentLongitude(),
+          getCurrentSearchTerm()
         )
       )
     },

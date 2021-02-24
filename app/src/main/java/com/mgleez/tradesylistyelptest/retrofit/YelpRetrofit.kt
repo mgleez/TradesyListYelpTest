@@ -14,22 +14,37 @@ interface YelpRetrofit {
    * Using retrofit2's @GET annotation with @Query annotation's URL param appending,
    * requests a search for businesses by search term, latitude, longitude, etc.
    */
-  @GET("businesses/search/")
+  @GET("businesses/search")
+  suspend fun getBusinessList(
+    @Header("Authorization") key: String,
+    @Query("latitude") latitude: Double,
+    @Query("longitude") longitude: Double,
+    @Query("term") term: String
+//    @Query("latitude") latitude: Double,
+//    @Query("longitude") longitude: Double,
+//    @Query("term") term: String,
+//    @Query("location") location: String? = null,
+//    @Query("radius") radius: Int? = null,
+//    @Query("categories") categories: String? = null,
+//    @Query("locale") locale: String? = null,
+//    @Query("limit") limit: Int? = null,
+//    @Query("offset") offset: Int? = null,
+//    @Query("sort_by") sortBy: String? = null,
+//    @Query("price") price: String? = null,
+//    @Query("open_now") open_now: Boolean? = null,
+//    @Query("open_at") open_at: Int? = null,
+//    @Query("attributes") attributes: String? = null
+  ): YelpSearchEntity
+
+  /**
+   * Using retrofit2's @GET annotation with @Query annotation's URL param appending,
+   * requests a search for businesses by search term, location.
+   */
+  @GET("businesses/search")
   suspend fun getBusinessList(
     @Header("Authorization") key: String,
     @Query("term") term: String,
-    @Query("latitude") latitude: Double,
-    @Query("longitude") longitude: Double,
-    @Query("location") location: String? = null,
-    @Query("radius") radius: Int? = null,
-    @Query("categories") categories: String? = null,
-    @Query("locale") locale: String? = null,
-    @Query("limit") limit: Int? = null,
-    @Query("offset") offset: Int? = null,
-    @Query("sort_by") sortBy: String? = null,
-    @Query("price") price: String? = null,
-    @Query("open_now") open_now: Boolean? = null,
-    @Query("open_at") open_at: Int? = null,
-    @Query("attributes") attributes: String? = null
+    @Query("location") location: String
   ): YelpSearchEntity
+
 }

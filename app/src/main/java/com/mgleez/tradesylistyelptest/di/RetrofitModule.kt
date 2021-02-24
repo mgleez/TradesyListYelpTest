@@ -26,7 +26,7 @@ import javax.inject.Singleton
 object RetrofitModule {
   /**
    * Annotations create a single (java) provider (dagger) method binding the type YelpRetrofit
-   * (interface for retrofit to get weather data) to its returned value so dagger can inject a
+   * (interface for retrofit to get yelp data) to its returned value so dagger can inject a
    * YelpService with a Retrofit.Builder parameter where needed.
    */
   @Singleton

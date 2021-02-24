@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_yelp"
+    app:startDestination="@id/yelpSearchFragment">
+
+    <fragment
+        android:id="@+id/yelpSearchFragment"
+        android:name="com.mgleez.tradesylistyelptest.ui.YelpSearchFragment"
+        android:label="fragment_yelp_search" />
+
+</navigation>

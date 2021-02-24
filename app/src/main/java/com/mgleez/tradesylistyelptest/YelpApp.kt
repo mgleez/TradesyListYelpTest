@@ -11,7 +11,7 @@ const val BASE_URL = "https://api.yelp.com/v3/"
 fun getYelpApiKey() = "Bearer eWe45X-6OvoTp2pjmi2TzoZ242tg4JafpCATbw1NAschYTetIM5V6oSxqxL-gWT1OrNN2idb5GVxLMtgQ0nj0p9E9OsX8IsqMo9Cjakppvl6Bn8eigUtUUtOlWCgX3Yx"
 fun getCurrentLatitude(): Double = 34.0928
 fun getCurrentLongitude(): Double = 118.3287
-fun getCurrentSearchTerm() = "Hollywood"
+fun getCurrentSearchTerm() = "food"
 
 /**
  * TradesyListYelpTest: YelpApp
@@ -26,7 +26,7 @@ fun getCurrentSearchTerm() = "Hollywood"
  * components (@InstallIn(SingletonComponent::class) @Module annotated objects) are instantiated
  * at the right point in the lifecycle. A base class that injects members (made available to be
  * injected into a viewModel annotated with @ViewModelInject) into @AndroidEntryPoint annotated
- * Android classes: MainActivity, etc.
+ * Android classes: YelpActivity, etc.
  *
  * - Presents a list of businesses based on the user's input in the search field.
  * - Each business item in the list presents: its name and image.

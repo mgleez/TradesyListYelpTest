@@ -1,4 +1,98 @@
 #########################
+20210224.4 (MPM) Added viewModel, initial nav, and made search call
+
+activity_main.xml
+Changed:
++ MainActivity to YelpActivity
++ to contain navHostFragmentYelpSearch and progressBar
+
+AndroidManifest.xml
+Changed:
++ name to YelpActivity
+Added:
++ application name .YelpApp
++ permission.INTERNET
+
+build.gradle (app)
+Added:
++ plugins: 'kotlin-android-extensions', 'kotlin-kapt', 'dagger.hilt.android.plugin', "androidx.navigation.safeargs"
++ dependencies: fragment-ktx, hilt-lifecycle-viewmodel, legacy-support, lifecycle-extensions and navigation...
++ dependencies: kotlin-stdlib-jdk7, kotlinx-coroutines-android
++ dependencies: kapt: hilt, room, hilt-android
++
+
+build.gradle
+Added:
++ nav_version, and hilt_version
++ maven for jitpack.io
++ classpaths for: navigation-safe-args, hilt-android, dokka-android, kotlin-android
+
+dimens.xml
+New File:
++ basic dimens
+
+fragment_yelp_search.xml
+New File:
++ initial search fragment
+
+MainActivity.kt
+Removed:
++ renamed YelpActivity
+
+gradle-wrapper.properties
+Changed:
++ bin to all
+
+nav_graph_yelp.xml
+New File:
++ initial navigation
+
+RetrofitModule.kt
+YelpBusinessMapper.kt
+Changed:
+- comment typo
+
+strings.xml
+Added:
++ location, search , submit
+
+Toast.kt
+New File:
++ toast util extents String
+
+View.kt
+New File:
++ hide() and show()
+
+YelpActivity.kt
+New File:
++ Handles view model intents to present the progress bar and toast of errors for yelp searches.
+
+YelpApp.kt
+Changed:
++ search text to "food"
+
+YelpRepository.kt
+Added:
++ location text version of getBusinessList()
+Changed:
++ getBusinessList()'s parameter order
+
+YelpRetrofit.kt
+Changed:
++ getBusinessList() parameters to those needed.
+Added:
++ getBusinessList()
+
+YelpSearchFragment.kt
+New File:
++ Using the MVI pattern, request yelp search results
+
+YelpSearchViewModel.kt
+New File:
++ holds the yelp search data used by any observing UI, identified as an ViewModel for injection
+
+#########################
 20210224.3
 + More dependency injection and cleanup
 

@@ -1,4 +1,49 @@
 #########################
+20210224.5 (MPM) Added searchView
+
+AndroidManifest.xml
+Changed:
++ YelpActivity to searchable and singleTop
+
+fragment_yelp_search.xml
+Removed:
++ unused ideas
+
+ic_baseline_search_24.xml
+New File:
++ white search icon
+
+options_menu.xml
+New File:
++ with menu_search
+
+searchable.xml
+New File:
++ basic setup voiceSearchMode
+
+strings.xml
+Added:
++ search_hint
+
+YelpActivity.kt
+Added:
++ onCreateOptionsMenu()
+Changed:
++ so received ACTION_SEARCH Intent launches the request
+
+YelpRepository.kt
+Changed:
++ getYelpSearchIntentFlow() to take term parameter.
+
+YelpSearchFragment.kt
+Removed:
++ onViewCreated()
+
+YelpSearchViewModel.kt
+Changed:
++ setYelpSearchViewModelIntent() to take term parameter and to use getYelpSearchIntentFlow(term)
+
+#########################
 20210224.4 (MPM) Added viewModel, initial nav, and made search call
 
 activity_main.xml

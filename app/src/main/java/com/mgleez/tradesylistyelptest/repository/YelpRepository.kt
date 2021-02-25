@@ -2,7 +2,6 @@ package com.mgleez.tradesylistyelptest.repository
 
 import com.mgleez.tradesylistyelptest.getCurrentLatitude
 import com.mgleez.tradesylistyelptest.getCurrentLongitude
-import com.mgleez.tradesylistyelptest.getCurrentSearchTerm
 import com.mgleez.tradesylistyelptest.getYelpApiKey
 import com.mgleez.tradesylistyelptest.models.YelpBusiness
 import com.mgleez.tradesylistyelptest.models.YelpSearch
@@ -34,14 +33,14 @@ constructor(
    * and as viewModel intents it will emit loading and emit error or success.
    * Used in: YelpSearchViewModel's setYelpViewModelIntent()
    */
-  suspend fun getYelpSearchIntentFlow(): Flow<ViewModelIntent<YelpSearch>> = retrofitRoomMviFlow(
+  suspend fun getYelpSearchIntentFlow(term: String): Flow<ViewModelIntent<YelpSearch>> = retrofitRoomMviFlow(
     requestDataAndInsertResponseIntoRepository = {
       insertYelpBusinessIntoRepository(
         yelpRetrofit.getBusinessList(
           getYelpApiKey(),
           getCurrentLatitude(),
           getCurrentLongitude(),
-          getCurrentSearchTerm()
+          term
         )
       )
     },

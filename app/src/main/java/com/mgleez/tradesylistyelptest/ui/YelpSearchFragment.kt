@@ -27,17 +27,6 @@ class YelpSearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_yelp_search, container, false)
 
-    @ExperimentalCoroutinesApi
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        // viewInteractionInit: setOnClickListener
-        submit.setOnClickListener {
-            // TODO move to fragment's submit
-            viewModel.setYelpSearchViewModelIntent(YelpSearchIntent.GetYelpSearchEvent)
-            // NavHostFragment.findNavController(this).navigate(R.id.businessListFragment)
-        }
-    }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.yelpSearchViewModelIntent.observe(viewLifecycleOwner, {

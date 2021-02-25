@@ -42,11 +42,11 @@ constructor(
      * Set viewModelIntent. Interpret and handle event
      */
     @ExperimentalCoroutinesApi // Experimental launchIn()
-    fun setYelpSearchViewModelIntent(viewModelIntent: YelpSearchIntent) {
+    fun setYelpSearchViewModelIntent(viewModelIntent: YelpSearchIntent, term: String) {
         viewModelScope.launch {
             when (viewModelIntent) {
                 is YelpSearchIntent.GetYelpSearchEvent -> {
-                    repository.getYelpSearchIntentFlow()
+                    repository.getYelpSearchIntentFlow(term)
                         .onEach { it: ViewModelIntent<YelpSearch> ->
                             _viewModelIntent.value = it
                         }

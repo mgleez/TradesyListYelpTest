@@ -1,9 +1,13 @@
 package com.mgleez.tradesylistyelptest.ui
 
+import android.app.SearchManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.widget.SearchView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import com.mgleez.tradesylistyelptest.R
 import com.mgleez.tradesylistyelptest.models.YelpSearch
 import com.mgleez.tradesylistyelptest.utils.ViewModelIntent
@@ -30,8 +34,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  * Created by Mike Margulies 20210224
  */
 @AndroidEntryPoint
+@ExperimentalCoroutinesApi // Experimental launchIn() is used in viewModel.setYelpSearchViewModelIntent()
 class YelpActivity : AppCompatActivity() {
-
   private val viewModel: YelpSearchViewModel by viewModels()
 
   /**
@@ -41,7 +45,6 @@ class YelpActivity : AppCompatActivity() {
    * - toasting any error message
    * Request businesses can be done from the YelpSearchViewModel with YelpSearchIntent.GetYelpEvent.
    */
-  @ExperimentalCoroutinesApi // Experimental launchIn() is used in viewModel.setYelpSearchViewModelIntent()
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
@@ -56,5 +59,35 @@ class YelpActivity : AppCompatActivity() {
         }
       }
     })
+    intent.onSearchActionIntent()
   }
+
+  override fun onNewIntent(intent: Intent?) {
+    super.onNewIntent(intent)
+    setIntent(intent)
+    intent.onSearchActionIntent()
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    // Inflate the options menu from XML
+    menuInflater.inflate(R.menu.options_menu, menu)
+
+    // Get the SearchView and set the searchable configuration
+    (menu.findItem(R.id.menu_search).actionView as SearchView).apply {
+      // Enable assisted search. Get a reference to the SearchableInfo.
+      // Assumes current activity (componentName) is the searchable activity
+      setSearchableInfo((getSystemService(Context.SEARCH_SERVICE) as SearchManager).getSearchableInfo(componentName))
+      isIconifiedByDefault = false // Do not iconify the widget; expand it by default
+    }
+    return true
+  }
+
+  private fun Intent?.onSearchActionIntent() {
+    if (this?.action == Intent.ACTION_SEARCH) {
+      getStringExtra(SearchManager.QUERY)?.also { query ->
+        viewModel.setYelpSearchViewModelIntent(YelpSearchIntent.GetYelpSearchEvent, query)
+      }
+    }
+  }
+
 }

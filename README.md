@@ -1,8 +1,5 @@
 # TradesyListYelpTest
 
-# Yelp API key
-- eWe45X-6OvoTp2pjmi2TzoZ242tg4JafpCATbw1NAschYTetIM5V6oSxqxL-gWT1OrNN2idb5GVxLMtgQ0nj0p9E9OsX8IsqMo9Cjakppvl6Bn8eigUtUUtOlWCgX3Yx
-
 # Features implemented
 - Location permission check.
 - Yelp search at current location or selected city if location permission is denied.

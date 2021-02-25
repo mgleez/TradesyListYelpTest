@@ -10,14 +10,15 @@ data class YelpSearch(
   var yelpBusinessList: List<YelpBusiness>
 )
 
-class YelpBusiness(
+data class YelpBusiness(
   var id: String,
   var name: String,
   var image: String?,
+  var rating: Double?,
   var review: String? = null
 )
 
-class YelpRegion(
+data class YelpRegion(
   var latitude: Double,
   var longitude: Double
 )

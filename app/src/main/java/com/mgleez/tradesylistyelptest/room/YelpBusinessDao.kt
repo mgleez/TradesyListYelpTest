@@ -16,7 +16,7 @@ interface YelpBusinessDao {
     @Insert()
     suspend fun insert(yelpBusinessRoomEntityList: List<YelpBusinessRoomEntity>): List<Long>
 
-    @Query("SELECT id, name, image, review FROM businesses") // See: YelpCacheMapper
+    @Query("SELECT id, name, rating, image, review FROM businesses") // See: YelpCacheMapper
     suspend fun getBusinesses(): List<YelpBusinessRoomEntity>
 
     @Query("SELECT * FROM businesses") // See: YelpCacheMapper

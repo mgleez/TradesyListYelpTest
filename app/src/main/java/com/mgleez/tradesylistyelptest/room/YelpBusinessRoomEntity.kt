@@ -16,6 +16,9 @@ data class YelpBusinessRoomEntity(
     @ColumnInfo(name = "name")
     var name: String,
 
+    @ColumnInfo(name = "rating")
+    var rating: Double,
+
     @ColumnInfo(name = "image")
     var image: String? = null,
 

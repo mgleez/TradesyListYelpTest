@@ -19,6 +19,7 @@ constructor() :
         YelpBusiness(
             id = entity.id,
             name = entity.name,
+            rating = entity.rating,
             image = entity.image,
             review = entity.review,
         )
@@ -27,6 +28,7 @@ constructor() :
         YelpBusinessRoomEntity(
             id = domainModel.id,
             name = domainModel.name,
+            rating = domainModel.rating ?: 0.0,
             image = domainModel.image,
             review = domainModel.review,
         )

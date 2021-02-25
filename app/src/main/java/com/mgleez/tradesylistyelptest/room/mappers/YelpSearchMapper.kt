@@ -23,6 +23,7 @@ constructor() :
     yelpBusinessList = entity.businesses.map {
       YelpBusiness(
         id = it.id,
+        rating = it.rating,
         name = it.name,
         image = it.imageUrl
 //                review = it.review
@@ -36,6 +37,7 @@ constructor() :
     businesses = domainModel.yelpBusinessList.map {
       YelpBusinessEntity(
         id = it.id,
+        rating = it.rating,
         name = it.name,
         imageUrl = it.image
       )

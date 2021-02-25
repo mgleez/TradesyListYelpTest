@@ -51,9 +51,15 @@ class YelpActivity : AppCompatActivity() {
     // onViewModelIntent
     viewModel.yelpSearchViewModelIntent.observe(this, {
       when (it) {
-        is ViewModelIntent.Loading             -> progressBar.show()
-        is ViewModelIntent.Success<YelpSearch> -> progressBar.hide()
+        is ViewModelIntent.Loading             -> {
+          progressBar.show()
+          search.text = ""
+        }
+        is ViewModelIntent.Success<YelpSearch> -> {
+          progressBar.hide()
+        }
         is ViewModelIntent.Error               -> {
+          search.text = ""
           progressBar.hide()
           it.exception.message?.toast(this)
         }
@@ -82,10 +88,14 @@ class YelpActivity : AppCompatActivity() {
     return true
   }
 
+  /**
+   * Handles the ACTION_SEARCH intent with the GetYelpSearchEvent.
+   */
   private fun Intent?.onSearchActionIntent() {
     if (this?.action == Intent.ACTION_SEARCH) {
       getStringExtra(SearchManager.QUERY)?.also { query ->
         viewModel.setYelpSearchViewModelIntent(YelpSearchIntent.GetYelpSearchEvent, query)
+        search.text = query
       }
     }
   }

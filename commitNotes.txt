@@ -1,4 +1,75 @@
 #########################
+20210224.6 (MPM) Added RecyclerView
+
+activity_main.xml
+Added:
++ searchLabel and search TextViews
+
+build.gradle
+Added:
++ glide:compiler
+
+dimens.xml
+Added:
++ dimensions for images, corners, margins, and text
+
+fragment_yelp_search.xml
+Added:
++ yelpBusinessRecyclerView
+
+ic_baseline_star_24.xml
+Removed:
++ not needed
+
+item_business.xml
+New File:
++ business card
+
+RecyclerViewDecorationPadding.kt
+New File:
++ utility: for top padding
+
+stars_regular_0.png (m, h, xh, xxh)
+stars_regular_1.png
+stars_regular_1_half.png
+stars_regular_2.png
+stars_regular_2_half.png
+stars_regular_3.png
+stars_regular_3_half.png
+stars_regular_4.png
+stars_regular_4_half.png
+stars_regular_5.png
+New Files: (-mdpi, -hdpi, -xhdpi, and -xxhdpi)
++ Yelp's rating stars (png! yuck)
+
+strings.xml
+Added:
++ more strings
+
+YelpActivity.kt
+Changed:
++ onCreate() to handle search term display.
+
+YelpBusinessCacheMapper.kt
+YelpBusinessDao.kt
+YelpBusinessMapper.kt
+YelpBusinessRoomEntity.kt
+YelpSearch.kt
+YelpSearchMapper.kt
+Added:
++ rating
+
+YelpBusinessRecyclerListAdapter.kt
+New File:
++ Adapter using DiffUtil for the business list and handles clicking on an item
+
+YelpSearchFragment.kt
+Added:
++ onViewCreated() to handle recyclerView
+Changed:
++ onActivityCreated() to submit list to the adapter
+
+#########################
 20210224.5 (MPM) Added searchView
 
 AndroidManifest.xml

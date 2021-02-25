@@ -4,4 +4,8 @@
     <string name="search">Search</string>
     <string name="submit">Submit</string>
     <string name="search_hint">Search Yelp</string>
+    <string name="businessImage">Business Image</string>
+    <string name="ratingImage">Rating Image</string>
+    <string name="top_rated_review_c">Top Rated Review:</string>
+    <string name="showing_results_for">Showing results for</string>
 </resources>

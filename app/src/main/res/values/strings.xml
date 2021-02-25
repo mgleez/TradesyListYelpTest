@@ -8,4 +8,19 @@
     <string name="ratingImage">Rating Image</string>
     <string name="top_rated_review_c">Top Rated Review:</string>
     <string name="showing_results_for">Showing results for</string>
+    <string name="okay">Okay</string>
+    <string name="enter_a_city">Enter a city</string>
+    <string name="placeInstruction">Enter a place to search.\n\nWithout your location, businesses can still be located by city.\n\nIf dismissed, default coordinates are used.\n</string>
+    <string name="cancelPlaceSelection">No, use my location</string>
+    <string name="enableLocation"           >Enable Location</string>
+    <string name="enableLocationMessage"    >Enabling Location allows this app to provide information about businesses in your current location.</string>
+
+    <string-array name="places">
+        <item>Los Angeles</item>
+        <item>Irvine, CA</item>
+        <item>Hollywood, CA</item>
+        <item>NYC</item>
+        <item>Maui</item>
+        <item>England</item>
+    </string-array>
 </resources>

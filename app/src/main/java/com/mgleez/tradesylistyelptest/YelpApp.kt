@@ -9,9 +9,11 @@ import dagger.hilt.android.HiltAndroidApp
 const val BASE_URL = "https://api.yelp.com/v3/"
 
 fun getYelpApiKey() = "Bearer eWe45X-6OvoTp2pjmi2TzoZ242tg4JafpCATbw1NAschYTetIM5V6oSxqxL-gWT1OrNN2idb5GVxLMtgQ0nj0p9E9OsX8IsqMo9Cjakppvl6Bn8eigUtUUtOlWCgX3Yx"
-fun getCurrentLatitude(): Double = 34.0928
-fun getCurrentLongitude(): Double = 118.3287
-fun getCurrentSearchTerm() = "food"
+var currentLatitude: Double = 34.0928
+var currentLongitude: Double = 118.3287
+var currentLocation: String? = null
+var currentSearchTerm: String = ""
+var isPlaceRejected = false
 
 /**
  * TradesyListYelpTest: YelpApp

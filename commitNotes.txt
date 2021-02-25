@@ -1,4 +1,58 @@
 #########################
+20210224.8 (MPM) Added location permission or pick-a-place
+
+AndroidManifest.xml
+Added:
++ location permission and service
+
+build.gradle
+Added:
++ play-services and androidx.activity
+Changed:
++ minSdkVersion to 26
+
+item_textview.xml
+New Files:
++ quickly-made spinner and item
+
+spinner_place.xml
+New File:
++ simple dialog
+
+strings.xml
+Added:
++ places array
++ location permission strings
+
+YelpActivity.kt
+Changed:
++ onCreate() to show search term if there is one
++ onCreate() check for place rejection
++ to requestPlace() dialog building added placeCancelButton.setOnClickListener
++ requestLocationPermission() to use better text
++ WRITE_EXTERNAL_STORAGE to ACCESS_COARSE_LOCATION typo
++ refactored and renamed SpinnerAdapter to PlaceSpinnerAdapter
+
+YelpApp.kt
+Added:
++ currentSearchTerm and isPlaceRejected, until preferences management is implemented
+Changed:
++ lat and lom to vars
+- removed vals from getYelpReviewListFromRepository()
+
+YelpRepository.kt
+Changed:
+* getYelpSearchIntentFlow() to not make request if term is the same.
+
+YelpRoomDatabase.kt
+Added:
++ YelpReviewRoomEntity
+
+YelpSearchFragment.kt
+Changed:
++ fixed sort jitter
+
+#########################
 20210224.7 (MPM) Added reviews
 
 EntityMapper.kt

@@ -16,6 +16,7 @@ import com.mgleez.tradesylistyelptest.utils.ViewModelIntent
 import com.mgleez.tradesylistyelptest.utils.toast
 import kotlinx.android.synthetic.main.fragment_yelp_search.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlin.math.abs
 
 /**
  * Using the MVI pattern, request yelp search results.
@@ -61,21 +62,26 @@ class YelpSearchFragment : Fragment() {
             reviewRequestCount--
           }
           this.yelpBusinessRecyclerListAdapter.submitList(
-            it.data.yelpBusinessList.sortedBy { business -> business.name }
+            it.data.yelpBusinessList.sortedBy { business -> getUnique(business) }
           )
         }
         is ViewModelIntent.Error               -> reviewRequestCount--
-        ViewModelIntent.Loading                -> reviewRequestCount++
+        is ViewModelIntent.Loading             -> reviewRequestCount++
       }
     })
     viewModel.yelpReviewListViewModelIntent.observe(viewLifecycleOwner, {
       // onViewModelIntent: Success
       if (it is ViewModelIntent.Success<YelpReviewList>) {
         if (reviewRequestCount <= 0) {
-          this.yelpBusinessRecyclerListAdapter.submitList(it.data.businessList.sortedBy { business -> business.name })
+          this.yelpBusinessRecyclerListAdapter.submitList(it.data.businessList.sortedBy { business -> getUnique(business) })
           this.yelpBusinessRecyclerListAdapter.notifyDataSetChanged()
         }
       }
     })
   }
+  /**
+   * To avoid reordering upon update or review.
+   */
+  private fun getUnique(business: YelpBusiness) =
+    "${business.name}${abs((business.rating ?: 0.0) - 5.0)}${business.id}"
 }

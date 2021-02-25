@@ -1,9 +1,18 @@
 #########################
+20210224.10 (MPM) README clean-up
+
+README.md
+Changed:
++ style
+Added:
++ Listed businesses with name and image plus star rating and review.
+
+#########################
 20210224.9 (MPM) Added README
 
 README.md
 New File:
-+ What I did and didnotdo.
++ What I did and did not do.
 
 #########################
 20210224.8 (MPM) Added location permission or pick-a-place

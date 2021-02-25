@@ -2,6 +2,7 @@ package com.mgleez.tradesylistyelptest.retrofit
 
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -37,8 +38,8 @@ interface YelpRetrofit {
   ): YelpSearchEntity
 
   /**
-   * Using retrofit2's @GET annotation with @Query annotation's URL param appending,
-   * requests a search for businesses by search term, location.
+   * Using retrofit2's @GET annotation with @Query annotation's URL param appending
+   * request a search for businesses by search term, location.
    */
   @GET("businesses/search")
   suspend fun getBusinessList(
@@ -46,5 +47,15 @@ interface YelpRetrofit {
     @Query("term") term: String,
     @Query("location") location: String
   ): YelpSearchEntity
+
+  /**
+   * Using retrofit2's @GET annotation with @Path annotation's URL param inserting
+   * request a search for businesses reviews by business id.
+   */
+  @GET("businesses/{id}/reviews")
+  suspend fun getReviewList(
+    @Header("Authorization") key: String,
+    @Path("id") id: String
+  ): YelpReviewListEntity
 
 }

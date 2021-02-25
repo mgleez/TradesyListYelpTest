@@ -21,7 +21,7 @@ constructor() :
             name = entity.name,
             rating = entity.rating,
             image = entity.image,
-            review = entity.review,
+            review = entity.review
         )
 
     override fun mapToEntity(domainModel: YelpBusiness) =
@@ -30,7 +30,7 @@ constructor() :
             name = domainModel.name,
             rating = domainModel.rating ?: 0.0,
             image = domainModel.image,
-            review = domainModel.review,
+            review = domainModel.review
         )
 
 }

@@ -1,6 +1,7 @@
 package com.mgleez.tradesylistyelptest.ui
 
 import androidx.lifecycle.*
+import com.mgleez.tradesylistyelptest.models.YelpReviewList
 import com.mgleez.tradesylistyelptest.models.YelpSearch
 import com.mgleez.tradesylistyelptest.repository.YelpRepository
 import com.mgleez.tradesylistyelptest.utils.ViewModelIntent
@@ -31,42 +32,72 @@ import javax.inject.Inject
 class YelpSearchViewModel
 @Inject
 constructor(
-    private val repository: YelpRepository,
-    private val saveStateHandle: SavedStateHandle
+  private val repository: YelpRepository,
+  private val saveStateHandle: SavedStateHandle
 ) : ViewModel() {
-    private val _viewModelIntent: MutableLiveData<ViewModelIntent<YelpSearch>> = MutableLiveData()
-    val yelpSearchViewModelIntent: LiveData<ViewModelIntent<YelpSearch>>
-        get() = _viewModelIntent
+  private val _yelpSearchViewModelIntent: MutableLiveData<ViewModelIntent<YelpSearch>> = MutableLiveData()
+  val yelpSearchViewModelIntent: LiveData<ViewModelIntent<YelpSearch>>
+    get() = _yelpSearchViewModelIntent
+  private val _yelpReviewListViewModelIntent: MutableLiveData<ViewModelIntent<YelpReviewList>> = MutableLiveData()
+  val yelpReviewListViewModelIntent: LiveData<ViewModelIntent<YelpReviewList>>
+    get() = _yelpReviewListViewModelIntent
 
-    /**
-     * Set viewModelIntent. Interpret and handle event
-     */
-    @ExperimentalCoroutinesApi // Experimental launchIn()
-    fun setYelpSearchViewModelIntent(viewModelIntent: YelpSearchIntent, term: String) {
-        viewModelScope.launch {
-            when (viewModelIntent) {
-                is YelpSearchIntent.GetYelpSearchEvent -> {
-                    repository.getYelpSearchIntentFlow(term)
-                        .onEach { it: ViewModelIntent<YelpSearch> ->
-                            _viewModelIntent.value = it
-                        }
-                        .launchIn(viewModelScope)
+  /**
+   * Set viewModelIntent. Interpret and handle event
+   */
+  @ExperimentalCoroutinesApi // Experimental launchIn()
+  fun setYelpSearchViewModelIntent(viewModelIntent: YelpSearchIntent, term: String) {
+    viewModelScope.launch {
+      when (viewModelIntent) {
+          is YelpSearchIntent.GetYelpSearchEvent -> {
+              repository.getYelpSearchIntentFlow(term)
+                .onEach {
+                    _yelpSearchViewModelIntent.value = it
                 }
-                is YelpSearchIntent.None -> {
-                    // not used
-                }
-            }
-        }
+                .launchIn(viewModelScope)
+          }
+          is YelpSearchIntent.None -> {
+              // not used
+          }
+      }
     }
+  }
+
+  /**
+   * Set viewModelIntent. Interpret and handle event
+   */
+  @ExperimentalCoroutinesApi // Experimental launchIn()
+  fun setYelpReviewListViewModelIntent(viewModelIntent: YelpReviewListIntent, businessId: String) {
+    viewModelScope.launch {
+      when (viewModelIntent) {
+          is YelpReviewListIntent.GetYelpReviewListEvent -> {
+              repository.getYelpReviewIntentFlow(businessId)
+                .onEach {
+                    _yelpReviewListViewModelIntent.value = it
+                }
+                .launchIn(viewModelScope)
+          }
+          is YelpReviewListIntent.None -> {
+              // not used
+          }
+      }
+    }
+  }
 }
 
 /**
  * This sealed class's objects are the possible YelpSearch intents used to communicate an event.
  */
 sealed class YelpSearchIntent {
-    //    object TestClick1 : YelpSearchIntent()
-//    object TestClick2 : YelpSearchIntent()
-    object GetYelpSearchEvent : YelpSearchIntent()
-    object None : YelpSearchIntent()
+  object GetYelpSearchEvent : YelpSearchIntent()
+  object None : YelpSearchIntent()
+}
+
+/**
+ * This sealed class's objects are the possible YelpReviewList intents used to communicate an event.
+ */
+sealed class YelpReviewListIntent {
+  object GetYelpReviewListEvent : YelpReviewListIntent()
+  object None : YelpReviewListIntent()
 }
 

@@ -20,14 +20,14 @@ constructor() :
         name = entity.name,
         rating = entity.rating,
         image = entity.imageUrl,
-        review = ""// TODO entity.review
+        review = "..."
     )
 
     override fun mapToEntity(domainModel: YelpBusiness) = YelpBusinessEntity(
         id = domainModel.id,
         name = domainModel.name,
         rating = domainModel.rating,
-        imageUrl = domainModel.image,
+        imageUrl = domainModel.image
         //review = domainModel.review
     )
 

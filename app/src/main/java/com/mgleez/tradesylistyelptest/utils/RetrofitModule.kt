@@ -1,12 +1,15 @@
 package com.mgleez.tradesylistyelptest.utils
 
+import android.os.SystemClock
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -61,6 +64,12 @@ object RetrofitModule {
   @Singleton
   fun providesOkHttpClient(logger: HttpLoggingInterceptor): OkHttpClient = OkHttpClient.Builder()
     .addInterceptor(logger)
+    .addNetworkInterceptor(object : Interceptor {
+      override fun intercept(chain: Interceptor.Chain): Response {
+        SystemClock.sleep(1000)
+        return chain.proceed(chain.request())
+      }
+    })
     .callTimeout(60, TimeUnit.SECONDS)
     .connectTimeout(60, TimeUnit.SECONDS)
     .writeTimeout(60, TimeUnit.SECONDS)

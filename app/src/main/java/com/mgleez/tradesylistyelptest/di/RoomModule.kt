@@ -42,12 +42,22 @@ object RoomModule {
       .build()
 
   /**
-   * Annotations create a single (java) provider (dagger) method binding the type YelpDao
-   * to its returned value so dagger can inject a YelpDao with a YelpRoomDatabase parameter
+   * Annotations create a single (java) provider (dagger) method binding the type YelpBusinessDao
+   * to its returned value so dagger can inject a YelpBusinessDao with a YelpRoomDatabase parameter
    * where needed.
    */
   @Singleton
   @Provides
-  fun providesYelpDao(yelpRoomDatabase: YelpRoomDatabase): YelpBusinessDao =
+  fun providesYelpBusinessDao(yelpRoomDatabase: YelpRoomDatabase): YelpBusinessDao =
     yelpRoomDatabase.yelpBusinessDao()
+
+  /**
+   * Annotations create a single (java) provider (dagger) method binding the type YelpReviewDao
+   * to its returned value so dagger can inject a YelpReviewDao with a YelpRoomDatabase parameter
+   * where needed.
+   */
+  @Singleton
+  @Provides
+  fun providesYelpReviewDao(yelpRoomDatabase: YelpRoomDatabase) = yelpRoomDatabase.yelpReviewDao()
+
 }

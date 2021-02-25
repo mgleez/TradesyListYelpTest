@@ -2,9 +2,12 @@ package com.mgleez.tradesylistyelptest.di
 
 import com.mgleez.tradesylistyelptest.repository.YelpRepository
 import com.mgleez.tradesylistyelptest.retrofit.YelpRetrofit
+import com.mgleez.tradesylistyelptest.retrofit.mappers.YelpReviewMapper
 import com.mgleez.tradesylistyelptest.room.YelpBusinessDao
+import com.mgleez.tradesylistyelptest.room.YelpReviewDao
 import com.mgleez.tradesylistyelptest.room.mappers.YelpBusinessCacheMapper
 import com.mgleez.tradesylistyelptest.room.mappers.YelpBusinessMapper
+import com.mgleez.tradesylistyelptest.room.mappers.YelpReviewCacheMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,14 +34,20 @@ object RepositoryModule {
   @Singleton
   @Provides
   fun providesYelpRepository(
-    yelpBusinessDao: YelpBusinessDao,
     yelpRetrofit: YelpRetrofit,
+    yelpBusinessDao: YelpBusinessDao,
     yelpBusinessMapper: YelpBusinessMapper,
-    yelpBusinessCacheMapper: YelpBusinessCacheMapper
+    yelpBusinessCacheMapper: YelpBusinessCacheMapper,
+    yelpReviewDao: YelpReviewDao,
+    yelpReviewMapper: YelpReviewMapper,
+    yelpReviewCacheMapper: YelpReviewCacheMapper
   ): YelpRepository = YelpRepository(
-    yelpBusinessDao,
     yelpRetrofit,
+    yelpBusinessDao,
     yelpBusinessMapper,
-    yelpBusinessCacheMapper
+    yelpBusinessCacheMapper,
+    yelpReviewDao,
+    yelpReviewMapper,
+    yelpReviewCacheMapper
   )
 }

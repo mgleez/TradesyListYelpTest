@@ -1,4 +1,82 @@
 #########################
+20210224.7 (MPM) Added reviews
+
+EntityMapper.kt
+Changed:
++ mapFromEntityList() to allow DomainModel updates is it is mapped (to add businessId)
+
+RepositoryModule.kt
+Added:
++ Review methods
+
+RetrofitModule.kt
+Added:
++ network request delay
+
+RoomModule.kt
+Changed:
++ providesYelpDao to providesYelpBusinessDao
+Added:
++ providesYelpReviewDao
+
+YelpBusinessCacheMapper.kt
+Changed:
+- removed comma
+
+YelpBusinessDao.kt
+Added:
++ deleteTable()
+
+YelpBusinessMapper.kt
+Changed:
++ default: review = "..."
+
+YelpBusinessRoomEntity.kt
+Changed:
++ default to ""
+
+YelpRepository.kt
+Added:
++ YelpReview dao and mapper
++ getYelpReviewIntentFlow(), getYelpReviewListFromRepository(), and insertYelpReviewListIntoRepository()
+
+YelpRetrofit.kt
+Added:
++ getReviewList()
+
+YelpReviewCacheMapper.kt
+YelpReviewDao.kt
+YelpReviewEntity.kt
+YelpReviewList.kt
+YelpReviewListEntity.kt
+YelpReviewListMapper.kt
+YelpReviewMapper.kt
+YelpReviewRoomEntity.kt
+New Files:
++ review data stuff
+
+YelpRoomDatabase.kt
+Changed:
++ version to 2
+Added:
++ YelpReviewDao
+
+YelpSearch.kt
+Changed:
++ default to ""
+
+YelpSearchFragment.kt
+Changed:
++ onActivityCreated() to request review for each business
++ to handle Success<YelpReviewList>
+
+YelpSearchViewModel.kt
+Changed:
++ _viewModelIntent to _yelpSearchViewModelIntent
+Added:
++ _yelpReviewListViewModelIntent, YelpReviewListIntent, and setYelpReviewListViewModelIntent()
+
+#########################
 20210224.6 (MPM) Added RecyclerView
 
 activity_main.xml

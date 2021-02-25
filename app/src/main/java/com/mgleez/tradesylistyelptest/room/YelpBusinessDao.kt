@@ -16,13 +16,15 @@ interface YelpBusinessDao {
     @Insert()
     suspend fun insert(yelpBusinessRoomEntityList: List<YelpBusinessRoomEntity>): List<Long>
 
-    @Query("SELECT id, name, rating, image, review FROM businesses") // See: YelpCacheMapper
+    @Query("SELECT id, name, rating, image, review FROM businesses") // See: YelpBusinessCacheMapper
     suspend fun getBusinesses(): List<YelpBusinessRoomEntity>
 
     @Query("SELECT * FROM businesses") // See: YelpCacheMapper
     suspend fun getBusinessesX(): List<YelpBusinessRoomEntity>
 
-    @Query("SELECT * FROM businesses WHERE id == :id") // See: YelpCacheMapper
+    @Query("SELECT * FROM businesses WHERE id == :id") // See: YelpBusinessCacheMapper
     suspend fun getBusiness(id: String): YelpBusinessRoomEntity
 
+    @Query("DELETE FROM businesses")
+    suspend fun deleteTable()
 }

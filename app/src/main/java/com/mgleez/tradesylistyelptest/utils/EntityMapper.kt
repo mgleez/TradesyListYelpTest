@@ -8,8 +8,8 @@ package com.mgleez.tradesylistyelptest.utils
 interface EntityMapper<Entity, DomainModel> {
     fun mapFromEntity(entity: Entity): DomainModel
     fun mapToEntity(domainModel: DomainModel): Entity
-    fun mapFromEntityList(entities: List<Entity>): List<DomainModel> =
-        entities.map { mapFromEntity(it) }
+    fun mapFromEntityList(entities: List<Entity>, update: (DomainModel) -> DomainModel = { it }): List<DomainModel> =
+        entities.map { update(mapFromEntity(it)) }
     fun mapToEntityList(entities: List<DomainModel>): List<Entity> =
         entities.map { mapToEntity(it) }
 }

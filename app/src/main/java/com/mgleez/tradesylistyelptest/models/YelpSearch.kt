@@ -15,7 +15,7 @@ data class YelpBusiness(
   var name: String,
   var image: String?,
   var rating: Double?,
-  var review: String? = null
+  var review: String = ""
 )
 
 data class YelpRegion(

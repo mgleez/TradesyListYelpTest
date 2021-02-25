@@ -1,4 +1,11 @@
 #########################
+20210224.9 (MPM) Added README
+
+README.md
+New File:
++ What I did and didnotdo.
+
+#########################
 20210224.8 (MPM) Added location permission or pick-a-place
 
 AndroidManifest.xml

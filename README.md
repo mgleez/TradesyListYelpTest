@@ -7,12 +7,12 @@
 - Rotation of list.
 
 # Use-cases
-- StartApp, select Deny location permission, select NYC -> OKAY, search, observe list of NYC businesses.
-- StartApp, select Deny location permission, dismiss next dialog, search, observe default list of location businesses.
-- StartApp, select Deny location permission, select NO..., search, observe list of local businesses.
-- StartApp, allow location permission, search, observe "Showing results for " current search text and list of local businesses.
+- Start app, select Deny location permission, select NYC -> OKAY, search, observe list of NYC businesses.
+- Start app, select Deny location permission, dismiss next dialog, search, observe default list of location businesses.
+- Start app, select Deny location permission, select NO..., search, observe list of local businesses.
+- Start app, allow location permission, search, observe "Showing results for " current search text and list of local businesses.
 - Redo same search, observe same local businesses.
-- With list, scoll quickly while loading, obsever text and pictures loading without effecting scroll.
+- With list, scroll quickly while loading, observer text and pictures loading without effecting scroll.
 - With list, rotate to landscape, repeat previous use-case.
 - With list, select business, observe name toast.
 

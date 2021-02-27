@@ -1,4 +1,27 @@
 #########################
+20210227.1 (MPM) Refactored YelpSearchViewModel
+
+README.md
+Changed:
++ fixed typos
+
+YelpActivity.kt
+Changed:
++ setYelpSearchViewModelIntent to setYelpViewModelIntent
+
+YelpSearchFragment.kt
+Changed:
++ setYelpReviewListViewModelIntent to setYelpViewModelIntent
+
+YelpSearchViewModel.kt
+Changed:
++ setYelpSearchViewModelIntent() and setYelpReviewListViewModelIntent() to setYelpViewModelIntent()
++ GetYelpSearchEvent to GetEventListYelpBusiness
++ Added object GetEventListYelpReview to YelpSearchIntent
+Removed:
++ object YelpReviewListIntent
+
+#########################
 20210224.10 (MPM) README clean-up
 
 README.md

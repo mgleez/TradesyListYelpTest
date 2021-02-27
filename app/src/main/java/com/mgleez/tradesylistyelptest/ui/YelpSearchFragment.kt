@@ -21,7 +21,7 @@ import kotlin.math.abs
 /**
  * Using the MVI pattern, request yelp search results.
  *
- * Created by Mike Margulies 20210224
+ * @author Michael Philip Margulies 20210224
  */
 class YelpSearchFragment : Fragment() {
   private val viewModel: YelpSearchViewModel by activityViewModels()
@@ -58,7 +58,7 @@ class YelpSearchFragment : Fragment() {
       when (it) {
         is ViewModelIntent.Success<YelpSearch> -> {
           it.data.yelpBusinessList.forEach { business ->
-            viewModel.setYelpReviewListViewModelIntent(YelpReviewListIntent.GetYelpReviewListEvent, business.id)
+            viewModel.setYelpViewModelIntent(YelpSearchIntent.GetEventListYelpReview, business.id)
             reviewRequestCount--
           }
           this.yelpBusinessRecyclerListAdapter.submitList(

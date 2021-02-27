@@ -8,17 +8,14 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
-import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.widget.AdapterView
 import android.widget.BaseAdapter
 import android.widget.SearchView
-import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -48,7 +45,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
  *
  * YelpSearchViewModel annotated with @ViewModelInject is available via "by viewModels()"
  *
- * Created by Mike Margulies 20210224
+ * @author Michael Philip Margulies 20210224
  */
 @AndroidEntryPoint
 @ExperimentalCoroutinesApi // Experimental launchIn() is used in viewModel.setYelpSearchViewModelIntent()
@@ -195,7 +192,7 @@ class YelpActivity : AppCompatActivity() {
   private fun Intent?.onSearchActionIntent() {
     if (this?.action == Intent.ACTION_SEARCH) {
       getStringExtra(SearchManager.QUERY)?.also { query ->
-        viewModel.setYelpSearchViewModelIntent(YelpSearchIntent.GetYelpSearchEvent, query)
+        viewModel.setYelpViewModelIntent(YelpSearchIntent.GetEventListYelpBusiness, query)
         search.text = query
       }
     }
